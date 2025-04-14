@@ -33,7 +33,7 @@ pipeline {
                     waitForQualityGate abortPipeline: true
                 }
             }
-     
+        }
     
 stage("Package") {
      steps {
