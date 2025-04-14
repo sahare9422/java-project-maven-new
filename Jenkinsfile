@@ -19,7 +19,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonarserver') {
                     withMaven(maven: 'apache-maven-3.6.3'){  
-                        sh 'mvn sonar:sonar -Dsonar.projectKey=java-project-maven-new -Dsonar.sources=./src/main/'
+                        sh 'mvn sonar:sonar -Dsonar.projectKey=java-project-maven-new -Dsonar.sources=./src/main/ -Dsonar.host.url=http://100.0.0.3:9000'
                     }
                 }
             }
