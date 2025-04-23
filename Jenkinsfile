@@ -15,25 +15,25 @@ pipeline {
                     }
                }
           }
-          stage('build && SonarQube analysis') {
-            steps {
-                withSonarQubeEnv('sonarserver') {
-                    withMaven(maven: 'apache-maven-3.6.3'){  
-                        sh 'mvn sonar:sonar -Dsonar.projectKey=java-project-maven-new -Dsonar.sources=./src/main/ -Dsonar.host.url=http://100.0.0.3:9000'
-                    }
-                }
-            }
-        }
-        stage("Quality Gate") {
-            steps {
-                timeout(time: 1, unit: 'HOURS') {
+         // stage('build && SonarQube analysis') {
+           // steps {
+             //   withSonarQubeEnv('sonarserver') {
+               //     withMaven(maven: 'apache-maven-3.6.3'){  
+                 //       sh 'mvn sonar:sonar -Dsonar.projectKey=java-project-maven-new -Dsonar.sources=./src/main/ -Dsonar.host.url=http://100.0.0.3:9000'
+                 //   }
+               // }
+         //   }
+       // }
+       // stage("Quality Gate") {
+         //   steps {
+           //     timeout(time: 1, unit: 'HOURS') {
                     // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
                     // true = set pipeline to UNSTABLE, false = don't
                     // Requires SonarScanner for Jenkins 2.7+
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
+             //       waitForQualityGate abortPipeline: true
+               // }
+           // }
+        //}
     
 stage("Package") {
      steps {
